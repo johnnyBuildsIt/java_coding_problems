@@ -21,7 +21,7 @@ public class SlidingWindows {
         int windowStart = 0;
         for(int windowEnd = 0; windowEnd < input.length; windowEnd++){
             curSum += input[windowEnd];
-            if(windowEnd >= windowSize - 1){
+            if(windowEnd >= windowSize - 1){//if windowSize = 3, want index 0,1,2
                 maxSum = Math.max(curSum, maxSum);
                 curSum -= input[windowStart];
                 windowStart++;
