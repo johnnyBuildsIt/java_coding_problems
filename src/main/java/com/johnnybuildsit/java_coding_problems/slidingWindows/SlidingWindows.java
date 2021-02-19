@@ -103,6 +103,10 @@ public class SlidingWindows {
         return smallestWindow;
     }
 
+    /*
+    Given a string, find the length of the longest substring in it
+    with no more than K distinct characters.
+     */
     public int longestSubstringWithDistinctChars(final String input, final int lettersAllowed) {
         int maxSubstringLen = 0;
 
