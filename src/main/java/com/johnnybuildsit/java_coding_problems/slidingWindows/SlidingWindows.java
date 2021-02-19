@@ -33,6 +33,22 @@ public class SlidingWindows {
     }
 
     public int smallestSubArrayWithGivenSum(int targetSum, int[] input) {
-        return 0;
+        int smallestWindow = Integer.MAX_VALUE;
+        for(int i = 0; i < input.length; i++) {
+            int curWindow = 0;
+            int curSum = 0;
+            for(int j = i; j < input.length; j++){
+                curWindow += 1;
+                curSum += input[j];
+                if(curSum >= targetSum) {
+                    if(curWindow < smallestWindow){
+                        smallestWindow = curWindow;
+                    }
+                    break;
+                }
+            }
+
+        }
+        return smallestWindow;
     }
 }
