@@ -12,7 +12,7 @@ class SlidingWindowsTest {
         @Test
         void maxSumSubArraySizeKBruteForceTest() {
             final int[] input = {2, 1, 5, 1, 3, 2};
-            int windowSize = 3;
+            final int windowSize = 3;
             final SlidingWindows slidingWindows = new SlidingWindows();
 
             final int result = slidingWindows.maxSumSubArraySizeKBruteForce(windowSize, input);
@@ -23,7 +23,7 @@ class SlidingWindowsTest {
         @Test
         void maxSumSubArraySizeKOptimizedTest() {
             final int[] input = {2, 1, 5, 1, 3, 2};
-            int windowSize = 3;
+            final int windowSize = 3;
             final SlidingWindows slidingWindows = new SlidingWindows();
 
             final int result = slidingWindows.maxSumSubArraySizeKOptimized(windowSize, input);
@@ -37,7 +37,7 @@ class SlidingWindowsTest {
         @Test
         void smallestSubArrayWithGivenSumBruteForceTest() {
             final int[] input = {2, 1, 5, 2, 3, 2};
-            int targetSum = 7;
+            final int targetSum = 7;
             final SlidingWindows slidingWindows = new SlidingWindows();
 
             final int result = slidingWindows.smallestSubArrayWithGivenSumBruteForce(targetSum, input);
@@ -48,7 +48,7 @@ class SlidingWindowsTest {
         @Test // added to deal with case of single qualifier at end of array
         void smallestSubArrayWithGivenSumBruteForceTest2() {
             final int[] input = {2, 1, 5, 2, 8};
-            int targetSum = 7;
+            final int targetSum = 7;
             final SlidingWindows slidingWindows = new SlidingWindows();
 
             final int result = slidingWindows.smallestSubArrayWithGivenSumBruteForce(targetSum, input);
@@ -59,7 +59,7 @@ class SlidingWindowsTest {
         @Test
         void smallestSubArrayWithGivenSumOptimizedTest() {
             final int[] input = {2, 1, 5, 2, 3, 2};
-            int targetSum = 7;
+            final int targetSum = 7;
             final SlidingWindows slidingWindows = new SlidingWindows();
 
             final int result = slidingWindows.smallestSubArrayWithGivenSumOptimized(targetSum, input);
@@ -70,7 +70,7 @@ class SlidingWindowsTest {
         @Test // added to deal with case of single qualifier at end of array
         void smallestSubArrayWithGivenSumOptimizedTest2() {
             final int[] input = {2, 1, 5, 2, 8};
-            int targetSum = 7;
+            final int targetSum = 7;
             final SlidingWindows slidingWindows = new SlidingWindows();
 
             final int result = slidingWindows.smallestSubArrayWithGivenSumOptimized(targetSum, input);

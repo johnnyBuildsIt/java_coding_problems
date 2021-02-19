@@ -1,12 +1,14 @@
 package com.johnnybuildsit.java_coding_problems.slidingWindows;
 
+import java.util.HashSet;
+
 public class SlidingWindows {
     /*
     Given an array of positive numbers and a positive number ‘k’,
     find the maximum sum of any contiguous subarray of size ‘k’.
      */
     // time complexity O(input * windowSize)
-    public int maxSumSubArraySizeKBruteForce(int windowSize, int[] input) {
+    public int maxSumSubArraySizeKBruteForce(final int windowSize, final int[] input) {
         int maxSum = 0;
         for(int i = 0; i < input.length - windowSize; i++){
             int curSum = 0;
@@ -21,7 +23,7 @@ public class SlidingWindows {
     }
 
     // time complexity O(input)
-    public int maxSumSubArraySizeKOptimized(int windowSize, int[] input) {
+    public int maxSumSubArraySizeKOptimized(final int windowSize, final int[] input) {
         int maxSum = 0;
         int curSum = 0;
         int windowStart = 0;
@@ -40,7 +42,7 @@ public class SlidingWindows {
     Given an array of positive numbers and a positive number ‘S,’ find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’.
     Return 0 if no such subarray exists.
      */
-    public int smallestSubArrayWithGivenSumBruteForce(int targetSum, int[] input) {
+    public int smallestSubArrayWithGivenSumBruteForce(final int targetSum, final int[] input) {
         int smallestWindow = Integer.MAX_VALUE;
         for(int i = 0; i < input.length; i++) {
             int curWindow = 0;
@@ -61,7 +63,7 @@ public class SlidingWindows {
     }
 
     // can be made more concise with a for loop as the outer loop
-    public int smallestSubArrayWithGivenSumOptimized(int targetSum, int[] input) {
+    public int smallestSubArrayWithGivenSumOptimized(final int targetSum, final int[] input) {
         int curSum = input[0];
         int curWindow = 1;
         int smallestWindow = Integer.MAX_VALUE;
@@ -94,7 +96,21 @@ public class SlidingWindows {
         return smallestWindow;
     }
 
-    public int longestSubstringWithDistinctChars(String input, int lettersAllowed) {
-        return 0;
+    public int longestSubstringWithDistinctChars(final String input, final int lettersAllowed) {
+        int maxSubstringLen = 0;
+        for(int i = 0; i < input.length(); i++) {
+            final HashSet<Character> curChars = new HashSet<>();
+            int curSubstringLen = 0;
+            for(int j = i; j < input.length(); j++) {
+                if(!curChars.contains(input.charAt(j)) && curChars.size() == lettersAllowed){
+                    maxSubstringLen = Math.max(maxSubstringLen, curSubstringLen);
+                    break;
+                } else {
+                    curChars.add(input.charAt(j));
+                    curSubstringLen++;
+                }
+            }
+        }
+        return maxSubstringLen;
     }
 }
