@@ -1,6 +1,7 @@
 package com.johnnybuildsit.java_coding_problems.slidingWindows;
 
 public class SlidingWindows {
+    // time complexity O(input * windowSize)
     public int maxSumSubArraySizeKBruteForce(int windowSize, int[] input) {
         int maxSum = 0;
         for(int i = 0; i < input.length - windowSize; i++){
@@ -15,6 +16,7 @@ public class SlidingWindows {
         return maxSum;
     }
 
+    // time complexity O(input)
     public int maxSumSubArraySizeKOptimized(int windowSize, int[] input) {
         int maxSum = 0;
         int curSum = 0;
