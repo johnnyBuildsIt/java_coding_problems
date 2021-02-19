@@ -6,12 +6,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SlidingWindowsTest {
     @Test
-    void maxSumSubArraySizeKTest() {
+    void maxSumSubArraySizeKBruteForceTest() {
         final int[] input = {2, 1, 5, 1, 3, 2};
         int windowSize = 3;
         final SlidingWindows slidingWindows = new SlidingWindows();
 
         final int result = slidingWindows.maxSumSubArraySizeKBruteForce(windowSize, input);
+
+        assertThat(result).isEqualTo(9);
+    }
+
+    @Test
+    void maxSumSubArraySizeKOptimizedTest() {
+        final int[] input = {2, 1, 5, 1, 3, 2};
+        int windowSize = 3;
+        final SlidingWindows slidingWindows = new SlidingWindows();
+
+        final int result = slidingWindows.maxSumSubArraySizeKOptimized(windowSize, input);
 
         assertThat(result).isEqualTo(9);
     }

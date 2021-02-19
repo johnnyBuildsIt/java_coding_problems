@@ -14,4 +14,19 @@ public class SlidingWindows {
         }
         return maxSum;
     }
+
+    public int maxSumSubArraySizeKOptimized(int windowSize, int[] input) {
+        int maxSum = 0;
+        int curSum = 0;
+        int windowStart = 0;
+        for(int windowEnd = 0; windowEnd < input.length; windowEnd++){
+            curSum += input[windowEnd];
+            if(windowEnd >= windowSize - 1){
+                maxSum = Math.max(curSum, maxSum);
+                curSum -= input[windowStart];
+                windowStart++;
+            }
+        }
+        return maxSum;
+    }
 }
