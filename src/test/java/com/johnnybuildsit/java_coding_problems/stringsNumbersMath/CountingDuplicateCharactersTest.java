@@ -43,7 +43,7 @@ class CountingDuplicateCharactersTest {
             final CountingDuplicateCharacters dupCounter = new CountingDuplicateCharacters();
             final String inString = "aaa";
 
-            final Map<Character, Integer> dupCounts = dupCounter.countDuplicatesStream(inString);
+            final Map<Character, Long> dupCounts = dupCounter.countDuplicatesStream(inString);
 
             assertThat(dupCounts.get('a')).isEqualTo(3);
         }

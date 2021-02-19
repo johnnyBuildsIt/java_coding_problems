@@ -2,12 +2,15 @@ package com.johnnybuildsit.java_coding_problems.stringsNumbersMath;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class CountingDuplicateCharacters {
-    public Map<Character, Integer> countDuplicatesImperative(String inString) {
-        Map<Character, Integer> dupCounts = new HashMap<>();
+    public Map<Character, Integer> countDuplicatesImperative(final String inString) {
+        final Map<Character, Integer> dupCounts = new HashMap<>();
 
         for(int i = 0; i < inString.length(); i++){
             final char currChar = inString.charAt(i);
@@ -22,7 +25,10 @@ public class CountingDuplicateCharacters {
         return dupCounts;
     }
 
-    public Map<Character, Integer> countDuplicatesStream(String inString) {
-        return null;
+    public Map<Character, Long> countDuplicatesStream(final String inString) {
+        final IntStream intStream = inString.chars();
+        final Stream<Character> characterStream = intStream.mapToObj(c -> (char) c);
+        final Map<Character, Long> dupCounts = characterStream.collect(groupingBy(c -> c, counting()));
+        return dupCounts;
     }
 }
