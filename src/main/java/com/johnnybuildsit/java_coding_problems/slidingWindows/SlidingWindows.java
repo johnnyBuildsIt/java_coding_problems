@@ -1,6 +1,10 @@
 package com.johnnybuildsit.java_coding_problems.slidingWindows;
 
 public class SlidingWindows {
+    /*
+    Given an array of positive numbers and a positive number ‘k’,
+    find the maximum sum of any contiguous subarray of size ‘k’.
+     */
     // time complexity O(input * windowSize)
     public int maxSumSubArraySizeKBruteForce(int windowSize, int[] input) {
         int maxSum = 0;
@@ -32,6 +36,10 @@ public class SlidingWindows {
         return maxSum;
     }
 
+    /*
+    Given an array of positive numbers and a positive number ‘S,’ find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’.
+    Return 0 if no such subarray exists.
+     */
     public int smallestSubArrayWithGivenSumBruteForce(int targetSum, int[] input) {
         int smallestWindow = Integer.MAX_VALUE;
         for(int i = 0; i < input.length; i++) {
@@ -52,7 +60,37 @@ public class SlidingWindows {
         return smallestWindow;
     }
 
+    // can be made more concise with a for loop as the outer loop
     public int smallestSubArrayWithGivenSumOptimized(int targetSum, int[] input) {
-        return 0;
+        int curSum = input[0];
+        int curWindow = 1;
+        int smallestWindow = Integer.MAX_VALUE;
+        int windowStart = 0, windowEnd = 0;
+
+        while(windowEnd < input.length){
+            // increase window
+            while(curSum < targetSum) {
+                windowEnd++;
+                curWindow++;
+                if(windowEnd < input.length){
+                    curSum += input[windowEnd];
+                } else {
+                    break;
+                }
+
+            }
+
+            smallestWindow = Math.min(curWindow, smallestWindow);
+            // decrease window
+            while(curSum >= targetSum){
+                curSum -= input[windowStart];
+                windowStart++;
+                curWindow--;
+                if (curSum == targetSum){
+                    smallestWindow = Math.min(curWindow, smallestWindow);
+                }
+            }
+        }
+        return smallestWindow;
     }
 }
