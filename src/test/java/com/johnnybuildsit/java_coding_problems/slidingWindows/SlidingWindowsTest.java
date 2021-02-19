@@ -35,23 +35,45 @@ class SlidingWindowsTest {
     @Nested
     class SmallestSubArray{
         @Test
-        void smallestSubArrayWithGivenSumTest() {
+        void smallestSubArrayWithGivenSumBruteForceTest() {
             final int[] input = {2, 1, 5, 2, 3, 2};
             int targetSum = 7;
             final SlidingWindows slidingWindows = new SlidingWindows();
 
-            final int result = slidingWindows.smallestSubArrayWithGivenSum(targetSum, input);
+            final int result = slidingWindows.smallestSubArrayWithGivenSumBruteForce(targetSum, input);
 
             assertThat(result).isEqualTo(2);
         }
 
-        @Test
-        void smallestSubArrayWithGivenSumTest2() {
+        @Test // added to deal with case of single qualifier at end of array
+        void smallestSubArrayWithGivenSumBruteForceTest2() {
             final int[] input = {2, 1, 5, 2, 8};
             int targetSum = 7;
             final SlidingWindows slidingWindows = new SlidingWindows();
 
-            final int result = slidingWindows.smallestSubArrayWithGivenSum(targetSum, input);
+            final int result = slidingWindows.smallestSubArrayWithGivenSumBruteForce(targetSum, input);
+
+            assertThat(result).isEqualTo(1);
+        }
+
+        @Test
+        void smallestSubArrayWithGivenSumOptimizedTest() {
+            final int[] input = {2, 1, 5, 2, 3, 2};
+            int targetSum = 7;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.smallestSubArrayWithGivenSumOptimized(targetSum, input);
+
+            assertThat(result).isEqualTo(2);
+        }
+
+        @Test // added to deal with case of single qualifier at end of array
+        void smallestSubArrayWithGivenSumOptimizedTest2() {
+            final int[] input = {2, 1, 5, 2, 8};
+            int targetSum = 7;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.smallestSubArrayWithGivenSumOptimized(targetSum, input);
 
             assertThat(result).isEqualTo(1);
         }

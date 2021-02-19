@@ -32,7 +32,7 @@ public class SlidingWindows {
         return maxSum;
     }
 
-    public int smallestSubArrayWithGivenSum(int targetSum, int[] input) {
+    public int smallestSubArrayWithGivenSumBruteForce(int targetSum, int[] input) {
         int smallestWindow = Integer.MAX_VALUE;
         for(int i = 0; i < input.length; i++) {
             int curWindow = 0;
@@ -50,5 +50,9 @@ public class SlidingWindows {
 
         }
         return smallestWindow;
+    }
+
+    public int smallestSubArrayWithGivenSumOptimized(int targetSum, int[] input) {
+        return 0;
     }
 }
