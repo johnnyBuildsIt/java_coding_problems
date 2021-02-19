@@ -31,4 +31,8 @@ public class SlidingWindows {
         }
         return maxSum;
     }
+
+    public int smallestSubArrayWithGivenSum(int targetSum, int[] input) {
+        return 0;
+    }
 }

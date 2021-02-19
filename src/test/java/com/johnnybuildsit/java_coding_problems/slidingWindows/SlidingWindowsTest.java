@@ -26,4 +26,13 @@ class SlidingWindowsTest {
 
         assertThat(result).isEqualTo(9);
     }
+
+    @Test
+    void smallestSubArrayWithGivenSumTest() {
+        final int[] input = {2, 1, 5, 2, 3, 2};
+        int targetSum = 7;
+        final SlidingWindows slidingWindows = new SlidingWindows();
+
+        final int result = slidingWindows.smallestSubArrayWithGivenSum(targetSum, input);
+    }
 }
