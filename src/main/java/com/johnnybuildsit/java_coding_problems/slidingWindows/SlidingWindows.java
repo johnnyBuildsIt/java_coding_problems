@@ -93,4 +93,8 @@ public class SlidingWindows {
         }
         return smallestWindow;
     }
+
+    public int longestSubstringWithDistinctChars(String input, int lettersAllowed) {
+        return 0;
+    }
 }

@@ -78,4 +78,40 @@ class SlidingWindowsTest {
             assertThat(result).isEqualTo(1);
         }
     }
+
+    @Nested
+    class LongestSubstringWithKDistinctCharacters {
+        @Test
+        void longestSubstringWithKDistinctCharactersTest() {
+            final String input = "araaci";
+            final int lettersAllowed = 2;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestSubstringWithDistinctChars(input, lettersAllowed);
+
+            assertThat(result).isEqualTo(4);
+        }
+
+        @Test
+        void longestSubstringWithKDistinctCharactersTest2() {
+            final String input = "araaci";
+            final int lettersAllowed = 1;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestSubstringWithDistinctChars(input, lettersAllowed);
+
+            assertThat(result).isEqualTo(2);
+        }
+
+        @Test
+        void longestSubstringWithKDistinctCharactersTest3() {
+            final String input = "cbbebi";
+            final int lettersAllowed = 3;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestSubstringWithDistinctChars(input, lettersAllowed);
+
+            assertThat(result).isEqualTo(5);
+        }
+    }
 }
