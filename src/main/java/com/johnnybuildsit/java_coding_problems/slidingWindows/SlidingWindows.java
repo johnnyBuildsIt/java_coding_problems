@@ -1,5 +1,6 @@
 package com.johnnybuildsit.java_coding_problems.slidingWindows;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class SlidingWindows {
@@ -124,6 +125,35 @@ public class SlidingWindows {
                 }
             }
         }
+        return maxSubstringLen;
+    }
+
+    public int longestSubstringWithDistinctCharsOptimized(String input, int lettersAllowed) {
+        int maxSubstringLen = 0;
+        int windowStart = 0;
+        final HashMap<Character, Integer> curChars = new HashMap<>();
+
+        for(int windowEnd = 0; windowEnd < input.length(); windowEnd++){
+            if (!curChars.containsKey(input.charAt(windowEnd))){
+                curChars.put(input.charAt(windowEnd), 1);
+            } else {
+                curChars.put(input.charAt(windowStart), curChars.get(input.charAt(windowStart)) + 1);
+            }
+
+            if (curChars.size() <= lettersAllowed) {
+                maxSubstringLen = Math.max(maxSubstringLen, (windowEnd + 1) - windowStart);
+            }
+
+            while (curChars.size() > lettersAllowed) {
+                if (curChars.get(input.charAt(windowStart)) == 1) {
+                    curChars.remove(input.charAt(windowStart));
+                } else {
+                    curChars.put(input.charAt(windowStart), curChars.get(input.charAt(windowStart)) - 1);
+                }
+                windowStart++;
+            }
+        }
+
         return maxSubstringLen;
     }
 }
