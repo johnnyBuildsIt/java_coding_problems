@@ -156,4 +156,8 @@ public class SlidingWindows {
 
         return maxSubstringLen;
     }
+
+    public int longestNoRepeatSubstring(String input) {
+        return 0;
+    }
 }

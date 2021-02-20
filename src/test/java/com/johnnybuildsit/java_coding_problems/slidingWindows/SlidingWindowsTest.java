@@ -160,4 +160,37 @@ class SlidingWindowsTest {
         }
 
     }
+    
+    @Nested
+    class LongestNoRepeatingSubstring {
+        @Test
+        void longestNoRepeatSubstringTest() {
+            final String input = "aabccbb";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestNoRepeatSubstring(input);
+
+            assertThat(result).isEqualTo(3);
+        }
+
+        @Test
+        void longestNoRepeatSubstringTest2() {
+            final String input = "abccde";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestNoRepeatSubstring(input);
+
+            assertThat(result).isEqualTo(3);
+        }
+
+        @Test
+        void longestNoRepeatSubstringTest3() {
+            final String input = "abbbb";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestNoRepeatSubstring(input);
+
+            assertThat(result).isEqualTo(2);
+        }
+    }
 }
