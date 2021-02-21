@@ -172,6 +172,8 @@ public class SlidingWindows {
         return maxLength;
     }
 
+    // time complexity O(n)
+    // space complexity O(# letters in alphabet) if ever letter is in input string
     public int longestSubstringWithSameLettersAfterReplacement(String input, int replacementsAllowed) {
         final HashMap<Character, Integer> charFrequencies = new HashMap<>();
         int maxInCurWindow = 0, maxOverall = 0;
