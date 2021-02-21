@@ -171,4 +171,8 @@ public class SlidingWindows {
         }
         return maxLength;
     }
+
+    public int longestSubstringWithSameLettersAfterReplacement(String input, int replacementsAllowed) {
+        return 0;
+    }
 }

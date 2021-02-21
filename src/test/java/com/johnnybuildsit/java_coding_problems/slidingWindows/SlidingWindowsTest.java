@@ -193,4 +193,40 @@ class SlidingWindowsTest {
             assertThat(result).isEqualTo(2);
         }
     }
+
+    @Nested
+    class LongestSubstringWithSameLettersAfterReplacement {
+        @Test
+        void longestSubstringWithSameLettersAfterReplacementTest() {
+            final String input = "aabccbb";
+            final int replacementsAllowed = 2;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestSubstringWithSameLettersAfterReplacement(input, replacementsAllowed);
+
+            assertThat(result).isEqualTo(5);
+        }
+
+        @Test
+        void longestSubstringWithSameLettersAfterReplacementTest1() {
+            final String input = "abbcb";
+            final int replacementsAllowed = 1;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestSubstringWithSameLettersAfterReplacement(input, replacementsAllowed);
+
+            assertThat(result).isEqualTo(4);
+        }
+
+        @Test
+        void longestSubstringWithSameLettersAfterReplacementTest2() {
+            final String input = "abccde";
+            final int replacementsAllowed = 1;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestSubstringWithSameLettersAfterReplacement(input, replacementsAllowed);
+
+            assertThat(result).isEqualTo(3);
+        }
+    }
 }
