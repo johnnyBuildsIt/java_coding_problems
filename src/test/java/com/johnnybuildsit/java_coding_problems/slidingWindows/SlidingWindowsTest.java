@@ -229,4 +229,29 @@ class SlidingWindowsTest {
             assertThat(result).isEqualTo(3);
         }
     }
+
+    @Nested
+    class LongestSubarrayWithOnesAfterReplacement {
+        @Test
+        void longestSubarrayWithOnesAfterReplacementTest() {
+            final int[] input = {0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1};
+            final int replacementsAllowed = 2;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestSubarrayWithOnesAfterReplacement(input, replacementsAllowed);
+
+            assertThat(result).isEqualTo(6);
+        }
+
+        @Test
+        void longestSubarrayWithOnesAfterReplacementTest2() {
+            final int[] input = {0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1};
+            final int replacementsAllowed = 3;
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final int result = slidingWindows.longestSubarrayWithOnesAfterReplacement(input, replacementsAllowed);
+
+            assertThat(result).isEqualTo(9);
+        }
+    }
 }

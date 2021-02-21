@@ -157,6 +157,9 @@ public class SlidingWindows {
         return maxSubstringLen;
     }
 
+    /*
+    Given a string, find the length of the longest substring, which has no repeating characters
+     */
     public int longestNoRepeatSubstring(String input) {
         int maxLength = 0;
         int windowStart = 0;
@@ -172,6 +175,11 @@ public class SlidingWindows {
         return maxLength;
     }
 
+    /*
+    Given a string with lowercase letters only, if you are allowed to replace
+    no more than ‘k’ letters with any letter, find the length of the longest
+    having the same letters after replacement
+     */
     // time complexity O(n)
     // space complexity O(# letters in alphabet) if ever letter is in input string
     public int longestSubstringWithSameLettersAfterReplacement(String input, int replacementsAllowed) {
@@ -194,5 +202,25 @@ public class SlidingWindows {
             maxOverall = Math.max(maxOverall, windowEnd - windowStart + 1);
         }
         return maxOverall;
+    }
+
+    public int longestSubarrayWithOnesAfterReplacement(int[] input, int replacementsAllowed) {
+        int frequencyOf1s = 0, windowStart = 0;
+        int maxLenContinuous1s = 0;
+        for (int windowEnd = 0; windowEnd < input.length; windowEnd++) {
+            int windowEndNum = input[windowEnd];
+            if (windowEndNum == 1) {
+                frequencyOf1s++;
+            }
+            // subtracting frequency of 1s b/c those are replacements that did not have to be made
+            if ((windowEnd - windowStart + 1) - frequencyOf1s > replacementsAllowed) {
+                if (input[windowStart] == 1) {
+                    frequencyOf1s--;
+                }
+                windowStart++;
+            }
+            maxLenContinuous1s = Math.max(maxLenContinuous1s, windowEnd - windowStart + 1);
+        }
+        return maxLenContinuous1s;
     }
 }
