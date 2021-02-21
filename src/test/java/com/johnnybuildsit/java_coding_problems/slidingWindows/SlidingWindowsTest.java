@@ -3,8 +3,12 @@ package com.johnnybuildsit.java_coding_problems.slidingWindows;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class SlidingWindowsTest {
 
@@ -278,7 +282,6 @@ class SlidingWindowsTest {
             final boolean result = slidingWindows.permutationInString(input, pattern);
 
             assertThat(result).isFalse();
-            fail("check me");
         }
 
         @Test
@@ -301,6 +304,20 @@ class SlidingWindowsTest {
             final boolean result = slidingWindows.permutationInString(input, pattern);
 
             assertThat(result).isTrue();
+        }
+
+        @Test
+        void permutationPatternToMapTest() {
+            final String pattern = "aaabbc";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final HashMap<Character, Integer> permutationLetters = slidingWindows.permutationToMap(pattern);
+
+            assertAll(
+                    () -> assertThat(permutationLetters.get('a')).isEqualTo(3),
+                    () -> assertThat(permutationLetters.get('b')).isEqualTo(2),
+                    () -> assertThat(permutationLetters.get('c')).isEqualTo(1)
+            );
         }
     }
 }

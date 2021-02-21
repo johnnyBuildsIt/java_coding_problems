@@ -1,7 +1,9 @@
 package com.johnnybuildsit.java_coding_problems.slidingWindows;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class SlidingWindows {
     /*
@@ -234,6 +236,35 @@ public class SlidingWindows {
     Given a string and a pattern, find out if the string contains any permutation of the pattern
      */
     public boolean permutationInString(String input, String pattern) {
+        HashMap<Character, Integer> permutationLetters = permutationToMap(pattern);
+        int windowStart = 0;
+        for (int windowEnd = 0; windowEnd < input.length(); windowEnd++) {
+            final char curChar = input.charAt(windowEnd);
+            if (!permutationLetters.containsKey(curChar)) {
+                windowStart = windowEnd + 1;
+                permutationLetters = permutationToMap(pattern);
+            } else {
+                if (permutationLetters.get(curChar) == 0) {
+                    windowStart++;
+                    permutationLetters = permutationToMap(pattern);
+                    permutationLetters.put(curChar, permutationLetters.get(curChar) - 1);
+                } else {
+                    permutationLetters.put(curChar, permutationLetters.get(curChar) - 1);
+                    if (permutationLetters.get(curChar) == 0 && windowEnd - windowStart + 1 == permutationLetters.size()) {
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
+    }
+
+    public HashMap<Character, Integer> permutationToMap(String pattern) {
+        final HashMap<Character, Integer> outMap = new HashMap<Character, Integer>();
+        pattern
+            .chars()
+            .mapToObj(c -> (char) c)
+            .forEach(c -> outMap.put(c, outMap.getOrDefault(c, 0) + 1));
+        return outMap;
     }
 }
