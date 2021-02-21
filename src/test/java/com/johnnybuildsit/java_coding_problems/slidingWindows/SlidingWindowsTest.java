@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 class SlidingWindowsTest {
 
@@ -48,7 +49,7 @@ class SlidingWindowsTest {
             }
 
             @Test // added to deal with case of single qualifier at end of array
-            void smallestSubArrayWithGivenSumBruteForceTest2() {
+            void smallestSubArrayWithGivenSumBruteForceTest1() {
                 final int[] input = {2, 1, 5, 2, 8};
                 final int targetSum = 7;
                 final SlidingWindows slidingWindows = new SlidingWindows();
@@ -73,7 +74,7 @@ class SlidingWindowsTest {
             }
 
             @Test // added to deal with case of single qualifier at end of array
-            void smallestSubArrayWithGivenSumOptimizedTest2() {
+            void smallestSubArrayWithGivenSumOptimizedTest1() {
                 final int[] input = {2, 1, 5, 2, 8};
                 final int targetSum = 7;
                 final SlidingWindows slidingWindows = new SlidingWindows();
@@ -101,7 +102,7 @@ class SlidingWindowsTest {
             }
 
             @Test
-            void longestSubstringWithKDistinctCharactersTest2() {
+            void longestSubstringWithKDistinctCharactersTest1() {
                 final String input = "araaci";
                 final int lettersAllowed = 1;
                 final SlidingWindows slidingWindows = new SlidingWindows();
@@ -112,7 +113,7 @@ class SlidingWindowsTest {
             }
 
             @Test
-            void longestSubstringWithKDistinctCharactersTest3() {
+            void longestSubstringWithKDistinctCharactersTest2() {
                 final String input = "cbbebi";
                 final int lettersAllowed = 3;
                 final SlidingWindows slidingWindows = new SlidingWindows();
@@ -137,7 +138,7 @@ class SlidingWindowsTest {
             }
 
             @Test
-            void longestSubstringWithKDistinctCharactersTest2() {
+            void longestSubstringWithKDistinctCharactersTest1() {
                 final String input = "araaci";
                 final int lettersAllowed = 1;
                 final SlidingWindows slidingWindows = new SlidingWindows();
@@ -148,7 +149,7 @@ class SlidingWindowsTest {
             }
 
             @Test
-            void longestSubstringWithKDistinctCharactersTest3() {
+            void longestSubstringWithKDistinctCharactersTest2() {
                 final String input = "cbbebi";
                 final int lettersAllowed = 3;
                 final SlidingWindows slidingWindows = new SlidingWindows();
@@ -174,7 +175,7 @@ class SlidingWindowsTest {
         }
 
         @Test
-        void longestNoRepeatSubstringTest2() {
+        void longestNoRepeatSubstringTest1() {
             final String input = "abccde";
             final SlidingWindows slidingWindows = new SlidingWindows();
 
@@ -184,7 +185,7 @@ class SlidingWindowsTest {
         }
 
         @Test
-        void longestNoRepeatSubstringTest3() {
+        void longestNoRepeatSubstringTest2() {
             final String input = "abbbb";
             final SlidingWindows slidingWindows = new SlidingWindows();
 
@@ -244,7 +245,7 @@ class SlidingWindowsTest {
         }
 
         @Test
-        void longestSubarrayWithOnesAfterReplacementTest2() {
+        void longestSubarrayWithOnesAfterReplacementTest1() {
             final int[] input = {0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1};
             final int replacementsAllowed = 3;
             final SlidingWindows slidingWindows = new SlidingWindows();
@@ -252,6 +253,54 @@ class SlidingWindowsTest {
             final int result = slidingWindows.longestSubarrayWithOnesAfterReplacement(input, replacementsAllowed);
 
             assertThat(result).isEqualTo(9);
+        }
+    }
+
+    @Nested
+    class PermutationInString {
+        @Test
+        void permutationInStringTest() {
+            final String input = "oidbcaf";
+            final String pattern = "abc";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final boolean result = slidingWindows.permutationInString(input, pattern);
+
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        void permutationInStringTest1() {
+            final String input = "odicf";
+            final String pattern = "dc";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final boolean result = slidingWindows.permutationInString(input, pattern);
+
+            assertThat(result).isFalse();
+            fail("check me");
+        }
+
+        @Test
+        void permutationInStringTest2() {
+            final String input = "bcdxabcdy";
+            final String pattern = "bcdyabcdx";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final boolean result = slidingWindows.permutationInString(input, pattern);
+
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        void permutationInStringTest3() {
+            final String input = "aaacb";
+            final String pattern = "abc";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final boolean result = slidingWindows.permutationInString(input, pattern);
+
+            assertThat(result).isTrue();
         }
     }
 }

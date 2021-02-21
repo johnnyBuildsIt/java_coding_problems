@@ -229,4 +229,8 @@ public class SlidingWindows {
         }
         return maxLenContinuous1s;
     }
+
+    public boolean permutationInString(String input, String pattern) {
+        return false;
+    }
 }
