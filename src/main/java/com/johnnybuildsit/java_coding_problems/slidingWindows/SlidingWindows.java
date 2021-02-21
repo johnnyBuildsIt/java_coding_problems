@@ -173,6 +173,24 @@ public class SlidingWindows {
     }
 
     public int longestSubstringWithSameLettersAfterReplacement(String input, int replacementsAllowed) {
-        return 0;
+        final HashMap<Character, Integer> charFrequencies = new HashMap<>();
+        int maxInCurWindow = 0, maxOverall = 0;
+        int windowStart = 0;
+        // the window will go from the start to the finish of the array
+        for (int windowEnd = 0; windowEnd < input.length(); windowEnd++) {
+            char windowEndChar = input.charAt(windowEnd);
+            // if windowEndChar is not in charFrequencies, zero will be returned
+            // as its value and 1 will be added
+            charFrequencies.put(windowEndChar, charFrequencies.getOrDefault(windowEndChar, 0) + 1);
+            maxInCurWindow = Math.max(maxInCurWindow, charFrequencies.get(windowEndChar));
+            // 1 is added to windowEnd - windowStart to give a size of at least 1
+            if ((windowEnd - windowStart + 1) - maxInCurWindow > replacementsAllowed) {
+                char windowStartChar = input.charAt(windowStart);
+                charFrequencies.put(windowStartChar, charFrequencies.get(windowStartChar) + 1);
+                windowStart++;
+            }
+            maxOverall = Math.max(maxOverall, windowEnd - windowStart + 1);
+        }
+        return maxOverall;
     }
 }
