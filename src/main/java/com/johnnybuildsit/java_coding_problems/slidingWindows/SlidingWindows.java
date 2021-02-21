@@ -204,6 +204,12 @@ public class SlidingWindows {
         return maxOverall;
     }
 
+    /*
+    Given an array containing 0s and 1s, if you are allowed to replace
+    no more than ‘k’ 0s with 1s, find the length of the longest contiguous subarray having all 1s
+    time complexity - O(n)
+    space complecity - O(1)
+     */
     public int longestSubarrayWithOnesAfterReplacement(int[] input, int replacementsAllowed) {
         int frequencyOf1s = 0, windowStart = 0;
         int maxLenContinuous1s = 0;
