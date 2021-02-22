@@ -2,6 +2,7 @@ package com.johnnybuildsit.java_coding_problems.slidingWindows;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class SlidingWindows {
     /*
@@ -264,5 +265,9 @@ public class SlidingWindows {
             .mapToObj(c -> (char) c)
             .forEach(c -> outMap.put(c, outMap.getOrDefault(c, 0) + 1));
         return outMap;
+    }
+
+    public List<Integer> stringAnagrams(String input, String pattern) {
+        return null;
     }
 }

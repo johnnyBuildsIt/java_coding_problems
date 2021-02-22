@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -317,6 +318,23 @@ class SlidingWindowsTest {
                     () -> assertThat(permutationLetters.get('a')).isEqualTo(3),
                     () -> assertThat(permutationLetters.get('b')).isEqualTo(2),
                     () -> assertThat(permutationLetters.get('c')).isEqualTo(1)
+            );
+        }
+    }
+    
+    @Nested
+    class StringAnagrams {
+        @Test
+        void StringAnagramsTest() {
+            final String input = "ppqp";
+            final String pattern = "pq";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final List<Integer> result = slidingWindows.stringAnagrams(input, pattern);
+
+            assertAll(
+                    () -> assertThat(result.get(0)).isEqualTo(1),
+                    () -> assertThat(result.get(1)).isEqualTo(2)
             );
         }
     }
