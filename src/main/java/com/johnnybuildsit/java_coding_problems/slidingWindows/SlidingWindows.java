@@ -73,36 +73,17 @@ public class SlidingWindows {
 
     // can be made more concise with a for loop as the outer loop
     public int smallestSubArrayWithGivenSumOptimized(final int targetSum, final int[] input) {
-        int curSum = input[0];
-        int curWindow = 1;
-        int smallestWindow = Integer.MAX_VALUE;
-        int windowStart = 0, windowEnd = 0;
-
-        while(windowEnd < input.length) {
-            // increase window
-            while(curSum < targetSum) {
-                windowEnd++;
-                curWindow++;
-                if(windowEnd < input.length){
-                    curSum += input[windowEnd];
-                } else {
-                    break;
-                }
-            }
-
-            smallestWindow = Math.min(curWindow, smallestWindow);
-            // decrease window
+        int curSum = 0, windowStart = 0;
+        int minLength = Integer.MAX_VALUE;
+        for(int windowEnd = 0; windowEnd < input.length; windowEnd++){
+            curSum += input[windowEnd];
             while(curSum >= targetSum){
+                minLength = Math.min(minLength, windowEnd - windowStart + 1);
                 curSum -= input[windowStart];
                 windowStart++;
-                curWindow--;
-
-                if (curSum == targetSum) {
-                    smallestWindow = Math.min(curWindow, smallestWindow);
-                }
             }
         }
-        return smallestWindow;
+        return minLength;
     }
 
     /*
