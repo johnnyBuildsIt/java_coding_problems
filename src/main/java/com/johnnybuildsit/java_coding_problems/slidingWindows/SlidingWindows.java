@@ -137,18 +137,20 @@ public class SlidingWindows {
     Given a string, find the length of the longest substring, which has no repeating characters
      */
     public int longestNoRepeatSubstring(String input) {
-        int maxLength = 0;
-        int windowStart = 0;
-        final HashMap<Character, Integer> charIndexes = new HashMap<>();
+        int maxLen = 0, windowStart = 0;
+        HashSet<Character> chars = new HashSet<>();
         for(int windowEnd = 0; windowEnd < input.length(); windowEnd++){
-            final char curChar = input.charAt(windowEnd);
-            if (charIndexes.containsKey(curChar)){
-                windowStart = Math.max(windowStart, charIndexes.get(curChar) + 1);// +1 b/c if start is at same index of curChar, need it to move forward 1
+            Character curChar = input.charAt(windowEnd);
+            if(chars.contains(curChar)){
+                windowStart = windowEnd;
+                chars = new HashSet<>();
+                chars.add(curChar);
+            }else{
+                chars.add(curChar);
             }
-            charIndexes.put(curChar, windowEnd);
-            maxLength = Math.max(maxLength, windowEnd - windowStart + 1);// +1 b/c if start and end are same, want string len of 1
+            maxLen = Math.max(maxLen, windowEnd - windowStart + 1);
         }
-        return maxLength;
+        return maxLen;
     }
 
     /*
