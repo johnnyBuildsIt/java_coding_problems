@@ -161,6 +161,17 @@ class SlidingWindowsTest {
 
                 assertThat(result).isEqualTo(5);
             }
+
+            @Test
+            void longestSubstringWithKDistinctCharactersTest3() {
+                final String input = "icaraa";
+                final int lettersAllowed = 2;
+                final SlidingWindows slidingWindows = new SlidingWindows();
+
+                final int result = slidingWindows.longestSubstringWithDistinctCharsOptimized(input, lettersAllowed);
+
+                assertThat(result).isEqualTo(4);
+            }
         }
 
     }

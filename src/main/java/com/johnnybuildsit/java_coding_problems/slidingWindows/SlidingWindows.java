@@ -71,7 +71,6 @@ public class SlidingWindows {
         return smallestWindow;
     }
 
-    // can be made more concise with a for loop as the outer loop
     public int smallestSubArrayWithGivenSumOptimized(final int targetSum, final int[] input) {
         int curSum = 0, windowStart = 0;
         int minLength = Integer.MAX_VALUE;
@@ -111,32 +110,27 @@ public class SlidingWindows {
     }
 
     public int longestSubstringWithDistinctCharsOptimized(String input, int lettersAllowed) {
-        int maxSubstringLen = 0;
-        int windowStart = 0;
-        final HashMap<Character, Integer> curChars = new HashMap<>();
-
+        final HashMap<Character, Integer> windowChars = new HashMap<>();
+        int windowStart = 0, curWindowSize = 0;
+        int maxWindowSizeSeen = 0;
         for(int windowEnd = 0; windowEnd < input.length(); windowEnd++){
-            if (!curChars.containsKey(input.charAt(windowEnd))){
-                curChars.put(input.charAt(windowEnd), 1);
-            } else {
-                curChars.put(input.charAt(windowStart), curChars.get(input.charAt(windowStart)) + 1);
-            }
-
-            if (curChars.size() <= lettersAllowed) {
-                maxSubstringLen = Math.max(maxSubstringLen, (windowEnd + 1) - windowStart);
-            }
-
-            while (curChars.size() > lettersAllowed) {
-                if (curChars.get(input.charAt(windowStart)) == 1) {
-                    curChars.remove(input.charAt(windowStart));
+            char curChar = input.charAt(windowEnd);
+            windowChars.put(curChar, windowChars.getOrDefault(curChar, 0) + 1);
+            curWindowSize++;
+            while(windowChars.size() > lettersAllowed){
+                char startChar = input.charAt(windowStart);
+                int startCharCount = windowChars.get(startChar);
+                if(startCharCount == 1){
+                    windowChars.remove(startChar);
                 } else {
-                    curChars.put(input.charAt(windowStart), curChars.get(input.charAt(windowStart)) - 1);
+                    windowChars.put(startChar, windowChars.get(startChar) - 1);
                 }
                 windowStart++;
+                curWindowSize--;
             }
+            maxWindowSizeSeen = Math.max(maxWindowSizeSeen, curWindowSize);
         }
-
-        return maxSubstringLen;
+        return maxWindowSizeSeen;
     }
 
     /*
