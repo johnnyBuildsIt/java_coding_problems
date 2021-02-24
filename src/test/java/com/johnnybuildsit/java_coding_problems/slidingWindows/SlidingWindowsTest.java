@@ -346,5 +346,20 @@ class SlidingWindowsTest {
                     () -> assertThat(result.get(1)).isEqualTo(2)
             );
         }
+
+        @Test
+        void StringAnagramsTest1() {
+            final String input = "abbcabc";
+            final String pattern = "abc";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final List<Integer> result = slidingWindows.stringAnagrams(input, pattern);
+
+            assertAll(
+                    () -> assertThat(result.get(0)).isEqualTo(2),
+                    () -> assertThat(result.get(1)).isEqualTo(3),
+                    () -> assertThat(result.get(2)).isEqualTo(4)
+            );
+        }
     }
 }

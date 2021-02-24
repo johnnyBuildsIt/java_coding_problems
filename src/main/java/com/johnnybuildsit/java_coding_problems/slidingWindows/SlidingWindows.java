@@ -1,5 +1,6 @@
 package com.johnnybuildsit.java_coding_problems.slidingWindows;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -245,6 +246,34 @@ public class SlidingWindows {
     }
 
     public List<Integer> stringAnagrams(String input, String pattern) {
-        return null;
+        final List<Integer> resultIndices = new ArrayList<Integer>();
+        HashMap<Character, Integer> chars = permutationToMap(pattern);
+        int curStartIndex = 0, windowStart = 0;
+        for (int windowEnd = 0; windowEnd < input.length(); windowEnd++) {
+            char curChar = input.charAt(windowEnd);
+            if (!chars.containsKey(curChar)) {
+                chars = permutationToMap(pattern);
+                windowStart = windowEnd + 1;
+            } else {
+                if (chars.get(curChar) == 0) {
+                    chars = permutationToMap(pattern);
+                    windowStart = windowEnd;
+                }
+                chars.put(curChar, chars.get(curChar) - 1);
+                int windowSize = windowEnd - windowStart + 1;
+                if (windowSize == 1) {
+                    curStartIndex = windowStart;
+                } else if (windowSize == chars.size()) {
+                    resultIndices.add(curStartIndex);
+                    chars = permutationToMap(pattern);
+                    windowStart++;
+                    windowEnd = windowStart;
+                    curChar = input.charAt(windowEnd);
+                    chars.put(curChar, chars.get(curChar) - 1);
+                    curStartIndex = windowStart;
+                }
+            }
+        }
+        return resultIndices;
     }
 }
