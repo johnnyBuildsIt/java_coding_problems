@@ -280,4 +280,8 @@ public class SlidingWindows {
         }
         return resultIndices;
     }
+
+    public String smallestWindowContainingSubstring(String input, String pattern) {
+        return null;
+    }
 }

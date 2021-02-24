@@ -365,6 +365,37 @@ class SlidingWindowsTest {
 
     @Nested
     class SmallestWindowContainingSubstring {
+        @Test
+        void smallestWindowContainingSubstringTest() {
+            final String input = "aabdec";
+            final String pattern = "abc";
+            final SlidingWindows slidingWindows = new SlidingWindows();
 
+            String result = slidingWindows.smallestWindowContainingSubstring(input, pattern);
+
+            assertThat(result).isEqualTo("abdec");
+        }
+
+        @Test
+        void smallestWindowContainingSubstringTest1() {
+            final String input = "abdbca";
+            final String pattern = "abc";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            String result = slidingWindows.smallestWindowContainingSubstring(input, pattern);
+
+            assertThat(result).isEqualTo("bca");
+        }
+
+        @Test
+        void smallestWindowContainingSubstringTest2() {
+            final String input = "adcad";
+            final String pattern = "abc";
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            String result = slidingWindows.smallestWindowContainingSubstring(input, pattern);
+
+            assertThat(result).isEqualTo("");
+        }
     }
 }
