@@ -362,4 +362,9 @@ class SlidingWindowsTest {
             );
         }
     }
+
+    @Nested
+    class SmallestWindowContainingSubstring {
+
+    }
 }
