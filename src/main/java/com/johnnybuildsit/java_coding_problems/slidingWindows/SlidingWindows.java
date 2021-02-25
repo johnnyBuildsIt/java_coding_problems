@@ -282,6 +282,23 @@ public class SlidingWindows {
     }
 
     public String smallestWindowContainingSubstring(String input, String pattern) {
-        return null;
+        final String output = "";
+        final HashMap<Character, Integer> chars = permutationToMap(pattern);
+        int windowStart = 0;
+        for (int windowEnd = 0; windowEnd < input.length(); windowEnd++) {
+            char curChar = input.charAt(windowEnd);
+            if (chars.containsKey(curChar)) {
+               chars.put(curChar, chars.get(curChar) - 1);
+            }
+            if (chars.get(curChar) == -1) {
+               while (!chars.containsKey(input.charAt(windowStart))) {
+                   windowStart++;
+               }
+               if (chars.get(input.charAt(windowStart)) == -1) {
+                   chars.put(input.charAt(windowStart), chars.get(input.charAt(windowStart)) + 1);
+               }
+            }
+        }
+        return output;
     }
 }
