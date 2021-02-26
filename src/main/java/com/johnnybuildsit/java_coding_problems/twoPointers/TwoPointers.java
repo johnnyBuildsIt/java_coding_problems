@@ -23,4 +23,15 @@ public class TwoPointers {
         }
         return output;
     }
+
+    public int removeDuplicates(int[] input) {
+        int nonDuplicateEnd = 1;
+        for (int pointer = 1; pointer < input.length; pointer++) {
+            if (input[nonDuplicateEnd] != input[pointer]) {
+                input[nonDuplicateEnd] = input[pointer];
+                nonDuplicateEnd++;
+            }
+        }
+        return nonDuplicateEnd;
+    }
 }
