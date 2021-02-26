@@ -398,4 +398,32 @@ class SlidingWindowsTest {
             assertThat(result).isEqualTo("");
         }
     }
+
+    @Nested
+    class WordsConcatenation {
+        @Test
+        void wordsConcatenationTest() {
+            final String input = "catfoxcat";
+            final String[] searchWords = {"cat", "fox"};
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final List<Integer> result = slidingWindows.wordsConcatenation(input, searchWords);
+
+            assertAll(
+                    () -> assertThat(result.get(0)).isEqualTo(0),
+                    () -> assertThat(result.get(1)).isEqualTo(3)
+            );
+        }
+
+        @Test
+        void wordsConcatenationTest1() {
+            final String input = "catcatfoxfox";
+            final String[] searchWords = {"cat", "fox"};
+            final SlidingWindows slidingWindows = new SlidingWindows();
+
+            final List<Integer> result = slidingWindows.wordsConcatenation(input, searchWords);
+
+            assertThat(result.get(0)).isEqualTo(3);
+        }
+    }
 }

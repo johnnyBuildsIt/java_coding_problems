@@ -284,4 +284,8 @@ public class SlidingWindows {
     public String smallestWindowContainingSubstring(String input, String pattern) {
         return "";
     }
+
+    public List<Integer> wordsConcatenation(String input, String[] searchWords) {
+        return null;
+    }
 }
