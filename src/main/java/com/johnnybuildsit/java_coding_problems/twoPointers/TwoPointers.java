@@ -35,7 +35,67 @@ public class TwoPointers {
         return nonDuplicateEnd;
     }
 
-    public int[] squareSortedAray(int[] input) {
-        return new int[0];
+    public int[] squareSortedArray(int[] input) {
+        final int[] output = new int[input.length];
+        int lastIndex = 0;
+        int lowPointer = -1, highPointer = input.length;
+        int pivot = minNonNegativeIndex(input);
+
+        if (pivot == 0) {
+            highPointer = 0;
+        } else if (pivot > 0 && pivot < input.length - 1) {
+            highPointer = pivot;
+            lowPointer = pivot - 1;
+        } else if (pivot == input.length - 1) {
+            lowPointer = pivot;
+        }
+
+        while (lastIndex < input.length) {
+            if (lowPointer >= 0 && highPointer <= input.length - 1) {
+                int sq0 = (int) Math.pow(input[lowPointer], 2);
+                int sq1 = (int) Math.pow(input[highPointer], 2);
+
+                if (sq0 < sq1) {
+                    output[lastIndex] = sq0;
+                    lastIndex++;
+                    output[lastIndex] = sq1;
+                    lastIndex++;
+                } else {
+                    output[lastIndex] = sq1;
+                    lastIndex++;
+                    output[lastIndex] = sq0;
+                    lastIndex++;
+                }
+
+                lowPointer--;
+                highPointer++;
+            } else if (lowPointer == -1) {
+                output[lastIndex] = (int) Math.pow(input[highPointer], 2);
+                lastIndex++;
+                highPointer++;
+            } else if (highPointer == input.length) {
+                output[lastIndex] = (int) Math.pow(input[lowPointer], 2);
+                lastIndex++;
+                lowPointer--;
+            }
+        }
+
+        return output;
+    }
+
+    public int minNonNegativeIndex(int[] input) {
+        int nonNegativeIndex = 0;
+        int prevElement = input[0];
+        for (int i = 0; i < input.length; i++) {
+            int curElement = input[i];
+            if (curElement >= 0) {
+                nonNegativeIndex = i;
+                break;
+            } else if (curElement > prevElement) {
+                prevElement = curElement;
+                nonNegativeIndex = i;
+            }
+        }
+        return nonNegativeIndex;
     }
 }
