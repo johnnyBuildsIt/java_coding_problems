@@ -34,4 +34,8 @@ public class TwoPointers {
         }
         return nonDuplicateEnd;
     }
+
+    public int[] squareSortedAray(int[] input) {
+        return new int[0];
+    }
 }

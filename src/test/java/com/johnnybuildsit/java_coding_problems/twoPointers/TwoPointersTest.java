@@ -37,4 +37,76 @@ class TwoPointersTest {
             );
         }
     }
+
+    @Nested
+    class RemoveDuplicates {
+        @Test
+        void removeDuplicatesTest() {
+            final int[] input = {2, 3, 3, 3, 6, 9, 9};
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final int result = twoPointers.removeDuplicates(input);
+
+            assertThat(result).isEqualTo(4);
+        }
+
+        @Test
+        void removeDuplicatesTest1() {
+            final int[] input = {2, 2, 2, 11};
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final int result = twoPointers.removeDuplicates(input);
+
+            assertThat(result).isEqualTo(2);
+        }
+    }
+
+    @Nested
+    class SquareSortedArray {
+        @Test
+        void squareSortedArrayTest() {
+            final int[] input = {-2, -1, 0, 2, 3};
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final int[] result = twoPointers.squareSortedAray(input);
+
+            assertAll(
+                    () -> assertThat(result[0]).isEqualTo(0),
+                    () -> assertThat(result[1]).isEqualTo(1),
+                    () -> assertThat(result[2]).isEqualTo(4),
+                    () -> assertThat(result[3]).isEqualTo(4),
+                    () -> assertThat(result[4]).isEqualTo(9)
+            );
+        }
+
+        @Test
+        void squareSortedArrayTest1() {
+            final int[] input = {0, 2, 3};
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final int[] result = twoPointers.squareSortedAray(input);
+
+            assertAll(
+                    () -> assertThat(result[0]).isEqualTo(0),
+                    () -> assertThat(result[1]).isEqualTo(4),
+                    () -> assertThat(result[2]).isEqualTo(9)
+            );
+        }
+
+        @Test
+        void squareSortedArrayTest2() {
+            final int[] input = {-8, -2, -1};
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final int[] result = twoPointers.squareSortedAray(input);
+
+            assertAll(
+                    () -> assertThat(result[0]).isEqualTo(1),
+                    () -> assertThat(result[1]).isEqualTo(4),
+                    () -> assertThat(result[2]).isEqualTo(64)
+            );
+        }
+
+
+    }
 }
