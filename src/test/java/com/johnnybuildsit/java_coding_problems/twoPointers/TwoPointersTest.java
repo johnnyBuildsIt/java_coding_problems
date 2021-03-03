@@ -3,6 +3,8 @@ package com.johnnybuildsit.java_coding_problems.twoPointers;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
@@ -138,6 +140,35 @@ class TwoPointersTest {
             final int result = twoPointers.minNonNegativeIndex(input);
 
             assertThat(result).isEqualTo(2);
+        }
+    }
+
+    @Nested
+    class TripletSumToZero {
+        @Test
+        void tripletSumToZeroTest() {
+            final int[] input = {-3, 0, 1, 2, -1, 1, -2};
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final List<List<Integer>> result = twoPointers.tripletSumToZero(input);
+
+            assertAll(
+                    () -> assertThat(result.get(0).get(0)).isEqualTo(-3),
+                    () -> assertThat(result.get(0).get(1)).isEqualTo(1),
+                    () -> assertThat(result.get(0).get(2)).isEqualTo(2),
+
+                    () -> assertThat(result.get(1).get(0)).isEqualTo(-2),
+                    () -> assertThat(result.get(1).get(1)).isEqualTo(0),
+                    () -> assertThat(result.get(1).get(2)).isEqualTo(2),
+
+                    () -> assertThat(result.get(2).get(0)).isEqualTo(-2),
+                    () -> assertThat(result.get(2).get(1)).isEqualTo(1),
+                    () -> assertThat(result.get(2).get(2)).isEqualTo(1),
+
+                    () -> assertThat(result.get(3).get(0)).isEqualTo(-1),
+                    () -> assertThat(result.get(3).get(1)).isEqualTo(0),
+                    () -> assertThat(result.get(3).get(2)).isEqualTo(1)
+            );
         }
     }
 }
