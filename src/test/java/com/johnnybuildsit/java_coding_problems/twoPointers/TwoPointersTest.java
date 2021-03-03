@@ -68,7 +68,7 @@ class TwoPointersTest {
             final int[] input = {-2, -1, 0, 2, 3};
             final TwoPointers twoPointers = new TwoPointers();
 
-            final int[] result = twoPointers.squareSortedAray(input);
+            final int[] result = twoPointers.squareSortedArray(input);
 
             assertAll(
                     () -> assertThat(result[0]).isEqualTo(0),
@@ -84,7 +84,7 @@ class TwoPointersTest {
             final int[] input = {0, 2, 3};
             final TwoPointers twoPointers = new TwoPointers();
 
-            final int[] result = twoPointers.squareSortedAray(input);
+            final int[] result = twoPointers.squareSortedArray(input);
 
             assertAll(
                     () -> assertThat(result[0]).isEqualTo(0),
@@ -98,7 +98,7 @@ class TwoPointersTest {
             final int[] input = {-8, -2, -1};
             final TwoPointers twoPointers = new TwoPointers();
 
-            final int[] result = twoPointers.squareSortedAray(input);
+            final int[] result = twoPointers.squareSortedArray(input);
 
             assertAll(
                     () -> assertThat(result[0]).isEqualTo(1),
@@ -106,7 +106,38 @@ class TwoPointersTest {
                     () -> assertThat(result[2]).isEqualTo(64)
             );
         }
+    }
 
+    @Nested
+    class MinNonNegativeIndex {
+        @Test
+        void minNonNegativeIndexTest() {
+            final int[] input = {-2, -1, 0, 2, 3};
+            final TwoPointers twoPointers = new TwoPointers();
 
+            final int result = twoPointers.minNonNegativeIndex(input);
+
+            assertThat(result).isEqualTo(2);
+        }
+
+        @Test
+        void minNonNegativeIndexTest1() {
+            final int[] input = {0, 2, 3};
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final int result = twoPointers.minNonNegativeIndex(input);
+
+            assertThat(result).isEqualTo(0);
+        }
+
+        @Test
+        void minNonNegativeIndexTest2() {
+            final int[] input = {-8, -2, -1};
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final int result = twoPointers.minNonNegativeIndex(input);
+
+            assertThat(result).isEqualTo(2);
+        }
     }
 }
