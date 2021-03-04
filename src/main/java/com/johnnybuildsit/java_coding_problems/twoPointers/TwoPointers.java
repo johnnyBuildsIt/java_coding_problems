@@ -138,4 +138,8 @@ public class TwoPointers {
         }
         return output;
     }
+
+    public int tripletSumCloseToTarget(int[] input, int targetSum) {
+        return 0;
+    }
 }

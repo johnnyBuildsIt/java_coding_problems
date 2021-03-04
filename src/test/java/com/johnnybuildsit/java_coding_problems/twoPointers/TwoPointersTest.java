@@ -171,4 +171,18 @@ class TwoPointersTest {
             );
         }
     }
+
+    @Nested
+    class TripletSumCloseToTarget {
+        @Test
+        void tripletSumCloseToTargetTest() {
+            final int[] input = {-2, 0, 1, 2};
+            final int targetSum = 2;
+            final TwoPointers twoPointers = new TwoPointers();
+
+            final int result = twoPointers.tripletSumCloseToTarget(input, targetSum);
+
+            assertThat(result).isEqualTo(1);
+        }
+    }
 }
