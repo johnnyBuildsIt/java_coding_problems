@@ -140,6 +140,26 @@ public class TwoPointers {
     }
 
     public int tripletSumCloseToTarget(int[] input, int targetSum) {
-        return 0;
+        int smallestDif = Integer.MAX_VALUE;
+        int closestSum = 0;
+        for(int curIndex = 0; curIndex < input.length - 2; curIndex++) {
+            int left = curIndex + 1;
+            int right = input.length - 1;
+            while (left < right) {
+                final int sum = input[curIndex] + input[left] + input[right];
+                final int diff = Math.abs(targetSum - sum);
+                if (diff < smallestDif) {
+                    smallestDif = diff;
+                    closestSum = sum;
+                }
+
+                if (sum < targetSum) {
+                    left++;
+                } else if (sum > targetSum) {
+                    right--;
+                }
+            }
+        }
+        return closestSum;
     }
 }
